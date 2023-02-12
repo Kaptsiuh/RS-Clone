@@ -18,16 +18,26 @@ const Home = () => {
           <button className="bg-gray-500 hover:bg-gray-700 text-white m-[4px] w-[22px] h-[22px] rounded-full transition-all active:bg-gray-700"></button>
         </div>
       </div>
-      <div className="w-full h-20 bg-gray-100 flex items-center justify-around">
-        <h2>period</h2>
-        <h2>period total</h2>
-        <h2>period time</h2>
-        <button>left</button>
-        <div>schedule</div>
-        <button>right</button>
+      <div className="w-full h-20 bg-gray-100 flex items-center justify-around text-sm">
+        <h2>THIS WEEK</h2>
+        <h2 className="pl-[40%]">TOTAL TODAY</h2>
+        <span className="w-1/12 text-base">0:00:00</span>
+        <h2>WEEK TOTAL</h2>
+        <span className="w-1/12 text-base">0:00:00</span>
       </div>
-      <div className="w-full h-20 bg-gray-100 flex items-center justify-center">
-        <div>progress bar</div>
+      <div className="p-3 w-full h-[60px] bg-gray-100 flex items-center justify-center">
+        <div className="flex flex-col w-[60%]">
+          <div className="whitespace-nowrap overflow-hidden">Name progect</div>
+          <span className="w-full bg-red-700 h-[5px] rounded-xl"></span>
+        </div>
+        <div className="flex flex-col w-[32%]">
+          <div className="whitespace-nowrap overflow-hidden">Name progect</div>
+          <span className="w-full bg-blue-700 h-[5px] rounded-xl"></span>
+        </div>
+        <div className="flex flex-col w-[8%]">
+          <div className="whitespace-nowrap overflow-hidden">Name progect</div>
+          <span className="w-full bg-green-700 h-[5px] rounded-xl"></span>
+        </div>
       </div>
     </>
   );
