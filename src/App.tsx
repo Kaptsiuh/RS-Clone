@@ -7,7 +7,7 @@ const App: FC = () => {
       <div className="bg-black text-white col-start-1 col-end-3 min-h-screen">
         Nurlan
       </div>
-      <div className="bg-red-500 col-start-3 col-end-9">
+      <div className="bg-gray-500 col-start-3 col-end-9">
         <Outlet />
       </div>
     </div>
