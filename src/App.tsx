@@ -105,7 +105,7 @@ const App: FC = () => {
 
         {/* <div className="w-6/6 h-full bg-gray-100 flex items-center justify-around"></div> */}
       </div>
-      <div className="bg-gray-100 col-start-3 col-end-9">
+      <div className="bg-gray-100 col-start-2 col-end-9">
         <Outlet />
       </div>
     </div>
