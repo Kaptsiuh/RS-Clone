@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const App: FC = () => {
