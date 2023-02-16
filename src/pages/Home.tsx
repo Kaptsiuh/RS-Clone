@@ -1,4 +1,6 @@
 import { FC, useEffect, useState } from "react";
+import DateTodo from "../components/DateTodo";
+import Progress from "../components/Progress";
 
 const Home: FC = () => {
   const [seconds, setSeconds] = useState(0);
@@ -47,6 +49,15 @@ const Home: FC = () => {
     }
   };
 
+  // const [todos, setTodos] = useState([]);
+
+  // const time = (value: any) => {
+  //   if (value) {
+  //     setTodos: (value: React.SetStateAction<never[]>) =>
+  //       void [...todos, { id: Date.now(), text: value, done: false }];
+  //   }
+  // };
+
   return (
     <>
       <div className="w-full h-20 bg-gray-200 shadow-md flex items-center">
@@ -79,38 +90,8 @@ const Home: FC = () => {
         <h2>WEEK TOTAL</h2>
         <span className="w-1/12 text-base">0:00:00</span>
       </div>
-      <div className="p-3 w-full h-[60px] bg-gray-100 flex items-center justify-center">
-        <div className="flex flex-col w-[60%]">
-          <div className="whitespace-nowrap overflow-hidden">Name progect</div>
-          <span className="w-full bg-red-700 h-[5px] rounded-xl"></span>
-        </div>
-        <div className="flex flex-col w-[32%]">
-          <div className="whitespace-nowrap overflow-hidden">Name progect</div>
-          <span className="w-full bg-blue-700 h-[5px] rounded-xl"></span>
-        </div>
-        <div className="flex flex-col w-[8%]">
-          <div className="whitespace-nowrap overflow-hidden">Name progect</div>
-          <span className="w-full bg-green-700 h-[5px] rounded-xl"></span>
-        </div>
-      </div>
-      <div className="bg-gray-200 shadow-md p-2">
-        <div className="flex justify-between">
-          <h2>Date</h2>
-          <span className="w-1/12">All time</span>
-        </div>
-        <div className="flex justify-between">
-          <div>
-            <span className="mr-6">Play</span>
-            <span>Name project</span>
-          </div>
-          <div>
-            <span>8:00 PM</span>
-            <span className="mx-1">-</span>
-            <span>8:00 PM</span>
-            <span className="text-base ml-6">time to project</span>
-          </div>
-        </div>
-      </div>
+      <Progress />
+      <DateTodo />
     </>
   );
 };
