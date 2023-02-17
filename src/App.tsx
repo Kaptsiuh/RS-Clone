@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const App: FC = () => {
   return (
-    <div className="grid grid-cols-8">
+    <div className="grid grid-cols-8 h-full">
       <div className="flex text-white col-start-1 col-end-2 min-h-screen">
         <div className="w-full bg-gray-300 h-full flex flex-col justify-between">
           <div>
@@ -105,7 +105,7 @@ const App: FC = () => {
 
         {/* <div className="w-6/6 h-full bg-gray-100 flex items-center justify-around"></div> */}
       </div>
-      <div className="bg-gray-100 col-start-2 col-end-9">
+      <div className="bg-gray-100 col-start-2 col-end-9 min-h-full flex flex-col">
         <Outlet />
       </div>
     </div>
