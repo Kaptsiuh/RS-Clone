@@ -1,18 +1,51 @@
-import { FC } from "react";
+import { FC, useEffect, useReducer } from "react";
+import { v4 as uuidv4 } from "uuid";
+
+import { Task, useTaskStore } from "../store/taskStore";
+
 import DateTodo from "../components/DateTodo";
 import Progress from "../components/Progress";
 import Timer from "../components/Timer";
+import Footer from "../components/Footer";
+
+const initialTask: Task = {
+  id: "",
+  title: "",
+  startTimestamp: 0,
+  endTimestamp: 0,
+};
 
 const Home: FC = () => {
+  const { tasks, addTask } = useTaskStore();
+
+  const [task, updateTask] = useReducer(
+    (prev: Task, next: Partial<Task>) => ({ ...prev, ...next }),
+    initialTask
+  );
+
+  useEffect(() => {
+    if (task.endTimestamp) {
+      addTask(task);
+      updateTask(initialTask);
+    }
+  }, [task]);
+
   return (
     <>
       <div className="w-full h-20 bg-gray-200 shadow-md flex items-center">
         <input
           type="text"
+          value={task.title}
+          onChange={(e) => updateTask({ title: e.target.value })}
           placeholder="What are you working on?"
           className="text-gray-600 bg-gray-200 w-5/6 ml-10"
         />
-        <Timer />
+        <Timer
+          onStart={() =>
+            updateTask({ id: uuidv4(), startTimestamp: Date.now() })
+          }
+          onStop={() => updateTask({ endTimestamp: Date.now() })}
+        />
         <div className="flex flex-col bg-gray-300 m-4 rounded-full">
           <button className="bg-gray-500 hover:bg-gray-700 text-white m-[4px] w-[22px] h-[22px] rounded-full transition-all"></button>
           <button className="bg-gray-500 hover:bg-gray-700 text-white m-[4px] w-[22px] h-[22px] rounded-full transition-all active:bg-gray-700"></button>
@@ -26,51 +59,12 @@ const Home: FC = () => {
         <span className="w-1/12 text-base">0:00:00</span>
       </div>
       <Progress />
-      <DateTodo />
-      <div className="flex-auto"></div>
-      <footer className="bg-gray-500">
-        <div className="container text-white flex items-center justify-around  max-md:flex-col ">
-          <div className="hover:text-orange-500 transition-colors font-bold">
-            <a href="https://rs.school/js/">RS School</a>
-          </div>
-          <div className="flex">
-            <a
-              href="https://github.com/Kaptsiuh"
-              className="flex m-4 items-center hover:text-orange-500 transition-colors"
-            >
-              <img
-                src="../src/assets/github.svg"
-                alt="github"
-                className="w-6 m-2"
-              />
-              <p>Kaptsiuh</p>
-            </a>
-            <a
-              href="https://github.com/kovalev-ds"
-              className="flex m-4 items-center hover:text-orange-500 transition-colors"
-            >
-              <img
-                src="../src/assets/github.svg"
-                alt="github"
-                className="w-6 m-2"
-              />
-              kovalev-ds
-            </a>
-            <a
-              href="https://github.com/flopinski"
-              className="flex m-4 items-center hover:text-orange-500 transition-colors"
-            >
-              <img
-                src="../src/assets/github.svg"
-                alt="github"
-                className="w-6 m-2"
-              />
-              flopinski
-            </a>
-          </div>
-          <div>© toggl.track-clone 2022</div>
-        </div>
-      </footer>
+      <div className="flex-auto">
+        {tasks.map((task, i) => (
+          <DateTodo item={task} />
+        ))}
+      </div>
+      <Footer />
     </>
   );
 };

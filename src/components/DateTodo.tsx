@@ -1,6 +1,14 @@
 import { FC } from "react";
+import { Task } from "../store/taskStore";
 
-const DateTodo: FC = () => {
+type DateTodoProps = {
+  item: Task;
+};
+
+const DateTodo: FC<DateTodoProps> = (props) => {
+  const {
+    item: { id, title, startTimestamp, endTimestamp },
+  } = props;
   return (
     <div className="bg-gray-200 shadow-md p-2">
       <div className="flex justify-between">
@@ -10,7 +18,7 @@ const DateTodo: FC = () => {
       <div className="flex justify-between">
         <div>
           <span className="mr-6">Play</span>
-          <span>Name project</span>
+          <span>{title}</span>
         </div>
         <div>
           <span>8:00 PM</span>

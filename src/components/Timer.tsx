@@ -1,24 +1,37 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 import { toHHMMSS } from "../utils/toHHMMSS";
 
-const Timer = () => {
+type TimerProps = {
+  onStart: () => void;
+  onStop: () => void;
+};
+
+const Timer: FC<TimerProps> = ({ onStart, onStop }) => {
   const [isStarted, setIsStarted] = useState<boolean>(false);
   const [seconds, setSeconds] = useState<number>(0);
 
+  const mounted = useRef<boolean>(false);
+
   useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      return;
+    }
+
     let id: number | undefined;
+
     if (isStarted) {
+      onStart();
       id = setInterval(() => {
         setSeconds((prev) => prev + 1);
       }, 1000);
     } else {
+      onStop();
       clearInterval(id);
       setSeconds(() => 0);
     }
-
-    console.log(Date.now());
 
     return () => {
       clearInterval(id);
