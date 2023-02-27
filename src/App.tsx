@@ -1,7 +1,17 @@
 import { FC, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useToDoTimer } from "./utils/todoTimer";
 
 const App: FC = () => {
+  const [tasks, createTimer, updateTimer, removeTimer] = useToDoTimer(
+    (state) => [
+      state.tasks,
+      state.createTimer,
+      state.updateTimer,
+      state.removeTimer,
+    ]
+  );
+
   return (
     <>
       <div className="grid grid-cols-8 h-full">

@@ -18,6 +18,8 @@ const Timer = () => {
       setSeconds(() => 0);
     }
 
+    console.log(Date.now());
+
     return () => {
       clearInterval(id);
     };
