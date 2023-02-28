@@ -11,6 +11,13 @@ const DateTodo: FC<DateTodoProps> = (props) => {
   const {
     item: { id, title, startTimestamp, endTimestamp },
   } = props;
+
+  let start = new Date(startTimestamp).toLocaleTimeString();
+  let end = new Date(endTimestamp).toLocaleTimeString();
+  let all = new Date(
+    endTimestamp - startTimestamp - 3600000
+  ).toLocaleTimeString();
+
   return (
     <div className="bg-gray-200 shadow-md p-2 mb-2">
       <div className="flex justify-between">
@@ -20,15 +27,13 @@ const DateTodo: FC<DateTodoProps> = (props) => {
       <div className="flex justify-between">
         <div>
           <span className="mr-6">Play</span>
-          <span>{title}</span>
+          <span className="ml-20">{title}</span>
         </div>
         <div>
-          <span>{startTimestamp} PM</span>
+          <span className="text-xs">{start}</span>
           <span className="mx-1">-</span>
-          <span>{endTimestamp} PM</span>
-          <span className="text-base ml-6">
-            {endTimestamp - startTimestamp}
-          </span>
+          <span className="text-xs">{end}</span>
+          <span className="text-base ml-6 mr-10">{all}</span>
         </div>
       </div>
     </div>
