@@ -11,7 +11,7 @@ const Footer = () => {
             className="flex m-4 items-center hover:text-orange-500 transition-colors"
           >
             <img
-              src="../src/assets/github.svg"
+              src="/src/assets/github.svg"
               alt="github"
               className="w-6 m-2"
             />
@@ -22,7 +22,7 @@ const Footer = () => {
             className="flex m-4 items-center hover:text-orange-500 transition-colors"
           >
             <img
-              src="../src/assets/github.svg"
+              src="/src/assets/github.svg"
               alt="github"
               className="w-6 m-2"
             />
@@ -33,7 +33,7 @@ const Footer = () => {
             className="flex m-4 items-center hover:text-orange-500 transition-colors"
           >
             <img
-              src="../src/assets/github.svg"
+              src="/src/assets/github.svg"
               alt="github"
               className="w-6 m-2"
             />

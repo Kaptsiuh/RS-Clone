@@ -12,7 +12,7 @@ const App: FC = () => {
                 <a className="w-full" href="">
                   <img
                     className="w-full h-7"
-                    src="./src/assets/power-on.svg"
+                    src="/src/assets/power-on.svg"
                     alt="main page button"
                   />
                 </a>
@@ -68,7 +68,7 @@ const App: FC = () => {
                 <a className="w-full h-10" href="">
                   <img
                     className="w-full h-8"
-                    src="./src/assets/language.svg"
+                    src="/src/assets/language.svg"
                     alt="language button"
                   />
                 </a>
